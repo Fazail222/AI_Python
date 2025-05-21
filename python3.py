@@ -81,11 +81,18 @@
 #         break
 
 # #10 2D list value assign
-# i = 4
-# j = 3
-# mat = [[0]*5 for _ in range(5)]
-# mat[i][j] = 99
-# print(mat)
+row=3
+col=4
+array_2d= [[0 for j in range(col)] for i in range(row)]
+for i in range(row):
+  for j in range(col):
+   array_2d[i][j]= i*j
+  print("")
+for i in range(row):
+  for j in range(col):
+   print(array_2d[i][j],end="")
+  print("")
+
 
 # # 11 
 # lines = []
@@ -101,12 +108,12 @@
 
 
 # #12
-data = input("Enter binary numbers separated by commas: ")
-binaries = data.split(',')
-for b in binaries:
-    deci = int(b, 2)
-    if deci % 2 == 0:
-        print(b)
+# data = input("Enter binary numbers separated by commas: ")
+# binaries = data.split(',')
+# for b in binaries:
+#     deci = int(b, 2)
+#     if deci % 5 == 0:
+#         print(b)
 
 # text = input("Enter a string: ")
 # # 13

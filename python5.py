@@ -1,74 +1,36 @@
-# class Stack:
-#     def __init__(self):  # constructor
-#         self.stack=[]
-#     def push(self,item):  # add element in stack
-#         self.stack.append(item)
+class Graph:
+    def __init__(self, n):
+        self.v=n
+        self.doublelist= [[] for i in range(n)]
+  
+    def addEdge(self,tailVertex,head_vertex):
+        self.doublelist[tailVertex].append(head_vertex)
+    def BFS(self , starting):
+        visited=  [False] * self.v
+        queue= []
+        queue.append(starting)
+        visited[starting]=True
+        while(not (len(queue)==0)):
+            print(queue[0],end=" ")
+            place=queue[0]
+            queue.pop(0)
+            for i in range(len(self.doublelist[place])):
+                if (visited[self.doublelist[place][i]] == False):
+                 queue.append(self.doublelist[place][i])
+                 visited[self.doublelist[place][i]] = True
+  
+  
+  
 
-#     def pop(self):      # remove last element
-#         if self.isEmpty():
-#             return "Stack is empty"
-#         return self.stack.pop()
-
-#     def peek(self,item):  # return top element
-#         if self.is_mpty():
-#             return "Stack is empty"
-#         return self.stack[-1]
-#     def isEmpty(self):    # return true if stack empty
-#         return len(self.stack)==0
-    
-#     def size(self): # return stack size
-#         return len(self.stack)
-#     def display(self):  # display stack element
-#         print("Stack elements:- ")
-#         print(self.stack[0::])
-
-# s = Stack()
-# s.push("apple")
-# s.push("orange")
-# s.push("bannana")
-# s.push("melon")
-# s.push("watermelon")
-# s.display()
-# s.pop()
-# s.pop()
-# s.display()
-# class Queue:
-#     def __init__(self):
-#         self.queue=[]
-#     def enqueue(self,item): 
-#         self.queue.append(item)
-#     def dequeue(self):
-#         if self.is_empty():
-#             return "Queue is Empty:"
-#         return self.queue.pop(0)
-#     def is_empty(self):
-#         return len(self.queue)==0
-#     def display(self):  # display stack element
-#         print("Queue elements:- ")
-#         print(self.queue[0::])
-    
-# q=Queue()
-# q.enqueue("apple")
-# q.enqueue("orange")
-# q.enqueue("bannana")
-# q.enqueue("melon")
-# q.enqueue("watermelon")
-# q.display()
-# q.dequeue()
-# q.dequeue()
-# q.display()       
-
-def BS(lis,left,right,target):
-    if left > right:
-        return False
-    mid =left + (right - left )//2
-    if target == lis[mid]:
-        return True
-    if target > lis[mid]:
-        return BS(lis,mid+1,right,target)
-    elif target < lis[mid]:
-        return BS(lis,left,mid-1,target)
-
-lis=[1,2,3,4,5]
-
-print(BS(lis,0,len(lis)-1,0))
+  
+  
+g = Graph(4)
+g.addEdge(0, 1)
+g.addEdge(0, 2)
+g.addEdge(1, 2)
+g.addEdge(2, 0)
+g.addEdge(2, 3)
+g.addEdge(3, 3)
+print(g.doublelist)
+print("")
+g.BFS(2)
